@@ -7,9 +7,6 @@ import ru.yandex.qatools.allure.events.AbstractTestSuiteFinishedEvent;
 import ru.yandex.qatools.allure.model.Label;
 import ru.yandex.qatools.allure.model.TestSuiteResult;
 
-/**
- * Created by Konstantin Neradovsky <kneradovsky@gmail.com> on 10.08.2015.
- */
 public class AllureAddLabelEvent extends AbstractTestSuiteFinishedEvent {
 
     List<Label> labels = new ArrayList<>();

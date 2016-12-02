@@ -8,8 +8,6 @@ import ru.yandex.qatools.allure.events.AddParameterEvent;
 
 /**
  * Helper to add parameters to allure report
- *
- * @author Viktor Sidochenko <viktor.sidochenko@gmail.com>
  */
 public class ParamsHelper {
 

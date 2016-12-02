@@ -30,7 +30,7 @@ public class AllureRunListener extends ru.yandex.qatools.allure.cucumberjvm.Allu
      * critical
      *
      * @param description - description of test
-     * @throws IllegalAccessException
+     * @throws IllegalAccessException TODO
      */
     @Override
     public void testFinished(Description description) throws IllegalAccessException {

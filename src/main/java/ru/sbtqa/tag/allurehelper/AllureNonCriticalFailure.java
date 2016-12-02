@@ -3,10 +3,6 @@ package ru.sbtqa.tag.allurehelper;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author Vadim Polosov <warorc@ngs.ru>
- */
 public class AllureNonCriticalFailure {
 
     private static final Map<Thread, Throwable> failureMap = new HashMap<>();
@@ -24,7 +20,7 @@ public class AllureNonCriticalFailure {
     /**
      * return failure which failureMap contains
      *
-     * @return
+     * @return TODO
      */
     public static Map<Thread, Throwable> getFailure() {
         return failureMap;

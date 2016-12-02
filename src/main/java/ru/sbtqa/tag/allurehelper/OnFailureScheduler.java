@@ -7,8 +7,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Helper to add actions in case exceptions are fired
- *
- * @author Viktor Sidochenko <viktor.sidochenko@gmail.com>
  */
 public class OnFailureScheduler {
 
