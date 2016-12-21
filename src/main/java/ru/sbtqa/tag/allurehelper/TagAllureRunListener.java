@@ -27,12 +27,12 @@ public class TagAllureRunListener extends ru.yandex.qatools.allure.cucumberjvm.A
         }
 
         TagAllureRunListener eqCandidate = (TagAllureRunListener) obj;
-        return eqCandidate.uuid.equals(uuid);
+        return eqCandidate.uuid.equals(this.uuid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this, getClass().getCanonicalName(), uuid);
+        return Objects.hash(super.hashCode(), this.uuid);
     }
 
 
