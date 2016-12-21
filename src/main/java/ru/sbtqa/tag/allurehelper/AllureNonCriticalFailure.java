@@ -7,6 +7,10 @@ public class AllureNonCriticalFailure {
 
     private static final Map<Thread, Throwable> failureMap = new HashMap<>();
 
+    private AllureNonCriticalFailure() {
+        throw new IllegalAccessError("Utility class");
+    }
+
     /**
      * Add thread as key and exception as value to failure map, for non
      * CriticalError during test executing

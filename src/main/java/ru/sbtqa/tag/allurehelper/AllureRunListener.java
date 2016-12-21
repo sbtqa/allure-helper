@@ -15,7 +15,7 @@ public class AllureRunListener extends ru.yandex.qatools.allure.cucumberjvm.Allu
 
     private static final Logger LOG = LoggerFactory.getLogger(AllureRunListener.class);
 
-    public static final String SuiteLabelsKey = "SuiteLabels";
+    public static final String SUITE_LABELS_KEY = "SuiteLabels";
 
     @Override
     public void testFailure(Failure failure) {
@@ -39,8 +39,8 @@ public class AllureRunListener extends ru.yandex.qatools.allure.cucumberjvm.Allu
 
     @Override
     public void testSuiteFinished(String uid) {
-        if (Stash.getInstance().containsKey(SuiteLabelsKey)) {
-            Map<String, String> lblsmap = (Map<String, String>) Stash.getInstance().get(SuiteLabelsKey);
+        if (Stash.getInstance().containsKey(SUITE_LABELS_KEY)) {
+            Map<String, String> lblsmap = (Map<String, String>) Stash.getInstance().get(SUITE_LABELS_KEY);
             List<Label> labels = lblsmap.entrySet().stream()
                     .map(e -> {
                         Label l = new Label();
@@ -49,7 +49,7 @@ public class AllureRunListener extends ru.yandex.qatools.allure.cucumberjvm.Allu
                         return l;
                     })
                     .collect(Collectors.toList());
-            if (labels.size() > 0) {
+            if (!labels.isEmpty()) {
                 Allure.LIFECYCLE.fire(new AllureAddLabelEvent(uid, labels));
             }
         }

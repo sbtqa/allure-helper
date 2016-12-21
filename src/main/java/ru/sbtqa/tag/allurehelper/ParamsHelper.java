@@ -20,11 +20,8 @@ public class ParamsHelper {
      * @param value - parameter value
      */
     public static void addParam(String fieldName, String value) {
-        if (fieldName == null) {
-            log.warn("Field name is empty");
-            fieldName = "Unnamed Field";
-        }
-        Allure.LIFECYCLE.fire(new AddParameterEvent(fieldName, value));
+        String name = (fieldName == null) ? "Unnamed Field" : fieldName;
+        Allure.LIFECYCLE.fire(new AddParameterEvent(name, value));
     }
 
     Parameter getParameterAnnotation(final String value) {
