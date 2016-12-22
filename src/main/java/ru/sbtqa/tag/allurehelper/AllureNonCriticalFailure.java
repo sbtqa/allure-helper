@@ -24,7 +24,7 @@ public class AllureNonCriticalFailure {
     /**
      * return failure which failureMap contains
      *
-     * @return a {@link ava.util.Map} object.
+     * @return a {@link java.util.Map} object.
      */
     public static Map<Thread, Throwable> getFailure() {
         return failureMap;
