@@ -44,6 +44,12 @@
   </distributionManagement>
   <dependencies>
     <dependency>
+      <groupId>ru.sbtqa.tag</groupId>
+      <artifactId>datajack</artifactId>
+      <version>1.1.0</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
       <groupId>info.cukes</groupId>
       <artifactId>cucumber-core</artifactId>
       <version>1.2.5</version>
@@ -83,12 +89,6 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
-      <type>jar</type>
-    </dependency>
-    <dependency>
-      <groupId>ru.sbtqa.tag</groupId>
-      <artifactId>datajack</artifactId>
-      <version>1.0.0</version>
       <type>jar</type>
     </dependency>
   </dependencies>

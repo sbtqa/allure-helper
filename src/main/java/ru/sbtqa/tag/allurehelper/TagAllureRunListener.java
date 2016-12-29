@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
 import org.junit.runner.notification.Failure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,8 +45,8 @@ public class TagAllureRunListener extends ru.yandex.qatools.allure.cucumberjvm.A
 
     @Override
     public void testSuiteFinished(String uid) {
-        if (Stash.getInstance().containsKey(SUITE_LABELS_KEY)) {
-            Map<String, String> lblsmap = (Map<String, String>) Stash.getInstance().get(SUITE_LABELS_KEY);
+        if (Stash.asMap().containsKey(SUITE_LABELS_KEY)) {
+            Map<String, String> lblsmap = (Map<String, String>) Stash.asMap().get(SUITE_LABELS_KEY);
             List<Label> labels = lblsmap.entrySet().stream()
                     .map(e -> {
                         Label l = new Label();
