@@ -3,7 +3,6 @@ package ru.sbtqa.tag.allurehelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import ru.yandex.qatools.allure.events.AbstractTestSuiteFinishedEvent;
 import ru.yandex.qatools.allure.model.Label;
 import ru.yandex.qatools.allure.model.TestSuiteResult;
@@ -27,7 +26,7 @@ public class AllureAddLabelEvent extends AbstractTestSuiteFinishedEvent {
 
     @Override
     public boolean equals(Object obj) {
-        if (!super.equals(obj)){
+        if (!super.equals(obj)) {
             return false;
         }
 
@@ -40,9 +39,12 @@ public class AllureAddLabelEvent extends AbstractTestSuiteFinishedEvent {
         return Objects.hash(super.hashCode(), this.labels);
     }
 
-
     @Override
     public void process(TestSuiteResult testSuiteResult) {
-        Optional.of(testSuiteResult.getLabels()).ifPresent(l -> l.addAll(labels));
+        List<Label> resultLabels = testSuiteResult.getLabels();
+        if (!resultLabels.isEmpty()) {
+            resultLabels.addAll(labels);
+        }
+        testSuiteResult.setLabels(resultLabels);
     }
 }

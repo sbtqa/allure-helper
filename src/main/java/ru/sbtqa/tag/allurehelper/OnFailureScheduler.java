@@ -12,16 +12,17 @@ public class OnFailureScheduler {
 
     private static final Logger LOG = LoggerFactory.getLogger(OnFailureScheduler.class);
 
-    private static final List<Runnable> runnables = new ArrayList<>();
+    private static final List<Runnable> RUNNABLES = new ArrayList<>();
 
     public static void addAction(Runnable task) {
-        runnables.add(task);
+        RUNNABLES.add(task);
     }
 
     public void processPendings() {
-        for (int i = 0; i < runnables.size(); i++) {
+
+        while (!RUNNABLES.isEmpty()) {
             try {
-                Runnable r = runnables.remove(0);
+                Runnable r = RUNNABLES.remove(0);
                 r.run();
             } catch (Exception | AssertionError t) {
                 LOG.warn("Cannot execute failure action", t);
