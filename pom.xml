@@ -64,13 +64,13 @@
     <dependency>
       <groupId>ru.yandex.qatools.allure</groupId>
       <artifactId>allure-java-annotations</artifactId>
-      <version>1.4.5</version>
+      <version>1.5.0</version>
       <type>jar</type>
     </dependency>
     <dependency>
       <groupId>ru.yandex.qatools.allure</groupId>
       <artifactId>allure-java-adaptor-api</artifactId>
-      <version>1.4.5</version>
+      <version>1.5.0</version>
       <type>jar</type>
     </dependency>
     <dependency>
