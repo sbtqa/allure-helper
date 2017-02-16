@@ -34,4 +34,9 @@ public class ParamsHelper {
             }
         };
     }
+
+    public static void addVideoParameter(String videoPath) {
+        ParamsHelper.addParam("Video url", videoPath);
+    }
+
 }

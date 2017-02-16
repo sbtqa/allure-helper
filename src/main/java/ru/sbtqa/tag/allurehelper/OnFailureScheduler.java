@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.yandex.qatools.allure.cucumberjvm.callback.OnFailureCallback;
 
 /**
  * Helper to add actions in case exceptions are fired
  */
-public class OnFailureScheduler {
+public class OnFailureScheduler implements OnFailureCallback{
 
     private static final Logger LOG = LoggerFactory.getLogger(OnFailureScheduler.class);
 
@@ -18,7 +19,8 @@ public class OnFailureScheduler {
         runnables.add(task);
     }
 
-    public void processPendings() {
+    @Override
+    public Object call() {
         for (int i = 0; i < runnables.size(); i++) {
             try {
                 Runnable r = runnables.remove(0);
@@ -27,6 +29,7 @@ public class OnFailureScheduler {
                 LOG.warn("Cannot execute failure action", t);
             }
         }
+        return null;
     }
 
 }

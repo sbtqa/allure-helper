@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class AllureNonCriticalFailure {
 
-    private static final Map<Thread, Throwable> failureMap = new HashMap<>();
+    private static final Map<Thread, Throwable> FAILURES_MAP = new HashMap<>();
 
     private AllureNonCriticalFailure() {
         throw new IllegalAccessError("Utility class");
@@ -18,22 +18,22 @@ public class AllureNonCriticalFailure {
      * @param throvv - throw stack trace
      */
     public static void fire(Throwable throvv) {
-        failureMap.put(Thread.currentThread(), throvv);
+        FAILURES_MAP.put(Thread.currentThread(), throvv);
     }
 
     /**
-     * return failure which failureMap contains
+     * Return failures which FAILURES_MAP contains
      *
-     * @return TODO
+     * @return all non critical failures
      */
-    public static Map<Thread, Throwable> getFailure() {
-        return failureMap;
+    public static Map<Thread, Throwable> getFailures() {
+        return FAILURES_MAP;
     }
 
     /**
-     * clear failureMap
+     * Clears FAILURES_MAP
      */
-    public static void clrFailure() {
-        failureMap.clear();
+    public static void clearFailures() {
+        FAILURES_MAP.clear();
     }
 }
