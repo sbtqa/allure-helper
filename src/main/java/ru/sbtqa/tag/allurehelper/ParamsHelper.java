@@ -12,11 +12,11 @@ public class ParamsHelper {
     /**
      * Add parameter to allure report
      *
-     * @param paramName parameter name
+     * @param fieldName field name to get title
      * @param value - parameter value
      */
-    public static void addParam(String paramName, String value) {
-        String name = (paramName == null) ? "Unnamed Parameter" : paramName;
+    public static void addParam(String fieldName, String value) {
+        String name = (fieldName == null) ? "Unnamed Field" : fieldName;
         Allure.LIFECYCLE.fire(new AddParameterEvent(name, value));
     }
 
@@ -34,4 +34,9 @@ public class ParamsHelper {
             }
         };
     }
+
+    public static void addVideoParameter(String videoPath) {
+        ParamsHelper.addParam("Video url", videoPath);
+    }
+
 }

@@ -1,4 +1,4 @@
 target/
 /.project
-/.idea
-/allure-helper.iml
+.idea/
+allure-helper.iml
