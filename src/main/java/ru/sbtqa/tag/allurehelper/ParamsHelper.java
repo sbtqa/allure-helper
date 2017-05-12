@@ -1,8 +1,8 @@
 package ru.sbtqa.tag.allurehelper;
 
 import ru.yandex.qatools.allure.Allure;
-import ru.yandex.qatools.allure.annotations.Parameter;
-import ru.yandex.qatools.allure.events.AddParameterEvent;
+import ru.yandex.qatools.allure.events.StepFinishedEvent;
+import ru.yandex.qatools.allure.events.StepStartedEvent;
 
 /**
  * Helper to add parameters to allure report
@@ -16,27 +16,19 @@ public class ParamsHelper {
      * @param value - parameter value
      */
     public static void addParam(String fieldName, String value) {
-        String name = (fieldName == null) ? "Unnamed Field" : fieldName;
-        Allure.LIFECYCLE.fire(new AddParameterEvent(name, value));
+        String safeName = (fieldName == null) ? "Unnamed Field" : fieldName;
+        addParam(safeName + ": %s", new String[]{value});
     }
-
-    Parameter getParameterAnnotation(final String value) {
-        return new Parameter() {
-
-            @Override
-            public String value() {
-                return value;
-            }
-
-            @Override
-            public Class<Parameter> annotationType() {
-                return Parameter.class;
-            }
-        };
+    
+    /**
+     * Add parameter to allure report
+     * 
+     * @param format a format string as described in Format string syntax.
+     * @param parameters parameters referenced by the format specifiers in the format string
+     */
+    public static void addParam(String format, String[] parameters) {
+        String name = String.format(format, (Object[]) parameters);
+        Allure.LIFECYCLE.fire(new StepStartedEvent(name));
+        Allure.LIFECYCLE.fire(new StepFinishedEvent());
     }
-
-    public static void addVideoParameter(String videoPath) {
-        ParamsHelper.addParam("Video url", videoPath);
-    }
-
 }
