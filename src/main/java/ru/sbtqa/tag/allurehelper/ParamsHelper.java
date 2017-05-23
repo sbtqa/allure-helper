@@ -20,10 +20,10 @@ public class ParamsHelper {
         String safeName = (fieldName == null) ? "Unnamed Field" : fieldName;
         addParam(safeName + ": %s", new String[]{value});
     }
-    
+
     /**
      * Add parameter to allure report
-     * 
+     *
      * @param format a format string as described in Format string syntax.
      * @param parameters parameters referenced by the format specifiers in the format string
      */
@@ -32,13 +32,13 @@ public class ParamsHelper {
         Allure.LIFECYCLE.fire(new StepStartedEvent(name));
         Allure.LIFECYCLE.fire(new StepFinishedEvent());
     }
-    
+
     /**
      * Add attachment to allure report
-     * 
-     * @param attachment
-     * @param title
-     * @param type
+     *
+     * @param attachment as byte array.
+     * @param title title of attachment. Shown at report as name of attachment
+     * @param type type of attachment
      */
     public static void addAttachment(byte[] attachment, String title, Type type) {
         Allure.LIFECYCLE.fire(new MakeAttachmentEvent(attachment, title, type.toString()));
