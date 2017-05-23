@@ -1,6 +1,7 @@
 package ru.sbtqa.tag.allurehelper;
 
 import ru.yandex.qatools.allure.Allure;
+import ru.yandex.qatools.allure.events.MakeAttachmentEvent;
 import ru.yandex.qatools.allure.events.StepFinishedEvent;
 import ru.yandex.qatools.allure.events.StepStartedEvent;
 
@@ -30,5 +31,16 @@ public class ParamsHelper {
         String name = String.format(format, (Object[]) parameters);
         Allure.LIFECYCLE.fire(new StepStartedEvent(name));
         Allure.LIFECYCLE.fire(new StepFinishedEvent());
+    }
+    
+    /**
+     * Add attachment to allure report
+     * 
+     * @param attachment
+     * @param title
+     * @param type
+     */
+    public static void addAttachment(byte[] attachment, String title, Type type) {
+        Allure.LIFECYCLE.fire(new MakeAttachmentEvent(attachment, title, type.toString()));
     }
 }
