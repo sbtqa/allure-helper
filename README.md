@@ -7,10 +7,10 @@ Allure-helper - небольшая библиотека, которая упро
    * **addParam** - метод позволяет добавить параметр в шаг отчета
    * **addAttachment** - метод позволяет добавить вложение в шаг отчета
 * **AllureNonCriticalFailure** - класс для работы с не критичными ошибками при выполнении теста.
-* **OnFailureScheduler** - класс выполняющийся после падения теста
+* **OnFailureScheduler** - класс, выполняющийся после падения теста
 
 ### Контакты
-Нашли ошибку или появились вопросы? [Проверьте](https://github.com/sbtqa/allure-helper/issues) нет ли уже созданных issue, если нет то создайте [новое](https://github.com/sbtqa/allure-helper/issues/new)!
+Нашли ошибку или появились вопросы? [Проверьте](https://github.com/sbtqa/allure-helper/issues) нет ли уже созданных? Если нет то создайте [новое](https://github.com/sbtqa/allure-helper/issues/new)!
 
 ### Лицензия 
 Allure-helper выпущен под лицензией Apache 2.0. [Подробности](https://github.com/sbtqa/allure-helper/blob/master/LICENSE).
