@@ -6,7 +6,11 @@ public enum Type {
     XML("application/xml"),
     HTML("text/html"),
     PNG("image/png"),
-    JPEG("image/jpeg");
+    JPEG("image/jpeg"),
+    CSV("text/csv"),
+    VIDEO("video/webm"),
+    URI("text/uri-list"),
+    TARGZIP("application/x-gtar");
 
     private final String type;
 
