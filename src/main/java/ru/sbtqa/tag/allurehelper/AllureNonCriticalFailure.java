@@ -1,5 +1,8 @@
 package ru.sbtqa.tag.allurehelper;
 
+import ru.yandex.qatools.allure.Allure;
+import ru.yandex.qatools.allure.events.StepFailureEvent;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +21,8 @@ public class AllureNonCriticalFailure {
      * @param throvv - throw stack trace
      */
     public static void fire(Throwable throvv) {
-        FAILURES_MAP.put(Thread.currentThread(), throvv);
+        Allure.LIFECYCLE.fire(new StepFailureEvent().withThrowable(throvv));
+        Allure.LIFECYCLE.fire(new TestCaseBrokenEvent().withThrowable(throvv));
     }
 
     /**
