@@ -33,6 +33,15 @@ public class TestCaseBrokenEvent extends TestCaseStatusChangeEvent {
     }
 
     /**
+     * Sets the default message
+     *
+     * @param message to set
+     */
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    /**
      * Sets throwable
      *
      * @param value to set
