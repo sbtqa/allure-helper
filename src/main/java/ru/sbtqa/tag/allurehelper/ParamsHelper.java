@@ -1,5 +1,7 @@
 package ru.sbtqa.tag.allurehelper;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.yandex.qatools.allure.Allure;
 import ru.yandex.qatools.allure.events.MakeAttachmentEvent;
 import ru.yandex.qatools.allure.events.StepFinishedEvent;
@@ -9,6 +11,8 @@ import ru.yandex.qatools.allure.events.StepStartedEvent;
  * Helper to add parameters to allure report
  */
 public class ParamsHelper {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ParamsHelper.class);
 
     /**
      * Add parameter to allure report
@@ -29,6 +33,7 @@ public class ParamsHelper {
      */
     public static void addParam(String format, String[] parameters) {
         String name = String.format(format, (Object[]) parameters);
+        LOG.info(name);
         Allure.LIFECYCLE.fire(new StepStartedEvent(name));
         Allure.LIFECYCLE.fire(new StepFinishedEvent());
     }
