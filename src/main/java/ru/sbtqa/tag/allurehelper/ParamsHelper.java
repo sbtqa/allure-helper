@@ -1,24 +1,27 @@
 package ru.sbtqa.tag.allurehelper;
 
-import ru.yandex.qatools.allure.Allure;
-import ru.yandex.qatools.allure.events.MakeAttachmentEvent;
-import ru.yandex.qatools.allure.events.StepFinishedEvent;
-import ru.yandex.qatools.allure.events.StepStartedEvent;
+import io.qameta.allure.Allure;
+import io.qameta.allure.model.Status;
+import io.qameta.allure.model.StepResult;
+import static java.util.UUID.randomUUID;
 
 /**
  * Helper to add parameters to allure report
  */
 public class ParamsHelper {
 
+    private static final String UNNAMED_FIELD = "Unnamed Field";
+    private static final String VALUE_TEMPLATE = ": %s";
+
     /**
      * Add parameter to allure report
      *
      * @param fieldName field name to get title
-     * @param value - parameter value
+     * @param value parameter value
      */
     public static void addParam(String fieldName, String value) {
-        String safeName = (fieldName == null) ? "Unnamed Field" : fieldName;
-        addParam(safeName + ": %s", new String[]{value});
+        String safeName = (fieldName == null) ? UNNAMED_FIELD : fieldName;
+        addParam(safeName + VALUE_TEMPLATE, new String[]{value});
     }
 
     /**
@@ -29,8 +32,8 @@ public class ParamsHelper {
      */
     public static void addParam(String format, String[] parameters) {
         String name = String.format(format, (Object[]) parameters);
-        Allure.LIFECYCLE.fire(new StepStartedEvent(name));
-        Allure.LIFECYCLE.fire(new StepFinishedEvent());
+        Allure.getLifecycle().startStep(randomUUID().toString(), new StepResult().withName(name).withStatus(Status.PASSED));
+        Allure.getLifecycle().stopStep();
     }
 
     /**
@@ -41,6 +44,6 @@ public class ParamsHelper {
      * @param type type of attachment
      */
     public static void addAttachment(byte[] attachment, String title, Type type) {
-        Allure.LIFECYCLE.fire(new MakeAttachmentEvent(attachment, title, type.toString()));
+        Allure.getLifecycle().addAttachment(title, type.toString(), title, attachment);
     }
 }
