@@ -4,12 +4,15 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.model.Status;
 import io.qameta.allure.model.StepResult;
 import static java.util.UUID.randomUUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Helper to add parameters to allure report
  */
 public class ParamsHelper {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ParamsHelper.class);
     private static final String UNNAMED_FIELD = "Unnamed Field";
     private static final String VALUE_TEMPLATE = ": %s";
 
@@ -32,6 +35,7 @@ public class ParamsHelper {
      */
     public static void addParam(String format, String[] parameters) {
         String name = String.format(format, (Object[]) parameters);
+        LOG.info(name);
         Allure.getLifecycle().startStep(randomUUID().toString(), new StepResult().withName(name).withStatus(Status.PASSED));
         Allure.getLifecycle().stopStep();
     }
