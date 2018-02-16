@@ -4,7 +4,6 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.model.Status;
 import io.qameta.allure.model.StepResult;
 import static java.util.UUID.randomUUID;
-import java.util.function.Consumer;
 
 public class AllureNonCriticalFailure {
 
@@ -18,13 +17,9 @@ public class AllureNonCriticalFailure {
      * @param throvv - throw stack trace
      */
     public static void fire(Throwable throvv) {
-        Allure.getLifecycle().updateStep(new Consumer<StepResult>() {
-            @Override
-            public void accept(StepResult stepResult) {
-                stepResult.withStatus(Status.FAILED);
-            }
-        });
-        Allure.getLifecycle().startStep(randomUUID().toString(), new StepResult().withName(throvv.getMessage()).withStatus(Status.FAILED));
+        Allure.getLifecycle().startStep(randomUUID().toString(), new StepResult()
+                .withName(throvv.getMessage())
+                .withStatus(Status.FAILED));
         Allure.getLifecycle().stopStep();
     }
 }
