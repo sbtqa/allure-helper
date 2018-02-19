@@ -1,10 +1,10 @@
 package ru.sbtqa.tag.allurehelper;
 
 import gherkin.formatter.model.Step;
+import io.qameta.allure.cucumberjvm.AllureCucumberJvm;
 import ru.sbtqa.tag.qautils.i18n.I18N;
-import ru.yandex.qatools.allure.cucumberjvm.AllureReporter;
 
-public abstract class TagAllureReporter extends AllureReporter {
+public abstract class TagAllureReporter extends AllureCucumberJvm {
     
     @Override
     public String getStepName(Step step) {

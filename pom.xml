@@ -44,10 +44,9 @@
   </distributionManagement>
   <dependencies>
     <dependency>
-      <groupId>ru.sbtqa.tag</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>qa-utils</artifactId>
       <version>1.2.7</version>
-      <type>jar</type>
     </dependency>
     <dependency>
       <groupId>info.cukes</groupId>
@@ -62,10 +61,9 @@
       <type>jar</type>
     </dependency>
     <dependency>
-      <groupId>ru.yandex.qatools.allure</groupId>
-      <artifactId>allure-cucumber-jvm-adaptor</artifactId>
-      <version>1.6.4</version>
-      <type>jar</type>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber-jvm</artifactId>
+      <version>2.0-BETA22</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
