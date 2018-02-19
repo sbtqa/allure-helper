@@ -44,6 +44,12 @@
   </distributionManagement>
   <dependencies>
     <dependency>
+      <groupId>ru.sbtqa.tag</groupId>
+      <artifactId>qa-utils</artifactId>
+      <version>1.2.7</version>
+      <type>jar</type>
+    </dependency>
+    <dependency>
       <groupId>info.cukes</groupId>
       <artifactId>cucumber-core</artifactId>
       <version>1.2.5</version>
