@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ru.sbtqa.tag</groupId>
   <artifactId>allure-helper</artifactId>
-  <version>1.3-SNAPSHOT</version>
+  <version>1.3-SNAPSHOT-JAVA7</version>
   <packaging>jar</packaging>
   <name>allure-helper</name>
   <description>allure-helper description</description>
@@ -43,6 +43,12 @@
     </repository>
   </distributionManagement>
   <dependencies>
+    <dependency>
+      <groupId>ru.sbtqa.tag</groupId>
+      <artifactId>qa-utils</artifactId>
+      <version>1.3-SNAPSHOT</version>
+      <type>jar</type>
+    </dependency>
     <dependency>
       <groupId>info.cukes</groupId>
       <artifactId>cucumber-core</artifactId>
@@ -112,7 +118,7 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
+<!--      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
         <version>1.5</version>
@@ -125,7 +131,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin>-->
     </plugins>
   </build>
 </project>
