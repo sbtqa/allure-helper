@@ -37,7 +37,7 @@ public class ParamsHelper {
      */
     public static void addParam(String format, String[] parameters) {
         String name = String.format(format, (Object[]) parameters);
-        LOG.info(name);
+        LOG.debug(name);
         Allure.getLifecycle().startStep(randomUUID().toString(), new StepResult().withName(name).withStatus(Status.PASSED));
         Allure.getLifecycle().stopStep();
     }
@@ -53,7 +53,29 @@ public class ParamsHelper {
      */
     @Deprecated
     public static void addAttachment(byte[] attachment, String title, Type type) {
-        Allure.getLifecycle().addAttachment(title, type.toString(), title, attachment);
+        Allure.getLifecycle().addAttachment(title, type.getType(), title, attachment);
+    }
+
+    /**
+     * Add attachment that Allure can render (see attachmentType.js in allure2)
+     *
+     * @param attachment as byte array.
+     * @param title      title of attachment. Shown at report as name of attachment
+     * @param type       type of attachment
+     */
+    public static void addAttachmentToRender(byte[] attachment, String title, Type type) {
+        Allure.getLifecycle().addAttachment(title, type.getType(), EMPTY_STRING, attachment);
+    }
+
+    /**
+     * Add attachment that Allure will allow to download.
+     *
+     * @param attachment as byte array.
+     * @param title      title of attachment. Shown at report as name of attachment
+     * @param type       type of attachment
+     */
+    public static void addAttachmentToDownload(byte[] attachment, String title, Type type) {
+        Allure.getLifecycle().addAttachment(title, type.getType(), type.getExtension(), attachment);
     }
 
     /**
