@@ -48,7 +48,7 @@ public class ParamsHelper {
      * of a Allure-Jenkins exceptions.
      * @param attachment as byte array.
      * @param title title of attachment. Shown at report as name of attachment
-     * @param type type of attachment     *
+     * @param type type of attachment
      */
     @Deprecated
     public static void addAttachment(byte[] attachment, String title, Type type) {
@@ -70,8 +70,8 @@ public class ParamsHelper {
      * Add attachment that Allure will allow to download.
      *
      * @param attachment as byte array.
-     * @param title      title of attachment. Shown at report as name of attachment
-     * @param type       type of attachment
+     * @param title title of attachment. Shown at report as name of attachment
+     * @param type type of attachment
      */
     public static void addAttachmentToDownload(byte[] attachment, String title, Type type) {
         Allure.getLifecycle().addAttachment(title, type.getType(), type.getExtension(), attachment);
