@@ -3,10 +3,9 @@ package ru.sbtqa.tag.allurehelper;
 import io.qameta.allure.Allure;
 import io.qameta.allure.model.Status;
 import io.qameta.allure.model.StepResult;
+import static java.util.UUID.randomUUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static java.util.UUID.randomUUID;
 
 /**
  * Helper to add parameters to allure report
@@ -60,8 +59,8 @@ public class ParamsHelper {
      * Add attachment that Allure can render (see attachmentType.js in allure2)
      *
      * @param attachment as byte array.
-     * @param title      title of attachment. Shown at report as name of attachment
-     * @param type       type of attachment
+     * @param title title of attachment. Shown at report as name of attachment
+     * @param type type of attachment
      */
     public static void addAttachmentToRender(byte[] attachment, String title, Type type) {
         Allure.getLifecycle().addAttachment(title, type.getType(), EMPTY_STRING, attachment);
@@ -76,27 +75,5 @@ public class ParamsHelper {
      */
     public static void addAttachmentToDownload(byte[] attachment, String title, Type type) {
         Allure.getLifecycle().addAttachment(title, type.getType(), type.getExtension(), attachment);
-    }
-
-    /**
-     * Add attachment that Allure can render (see attachmentType.js in allure2)
-     *
-     * @param attachment as byte array.
-     * @param title      title of attachment. Shown at report as name of attachment
-     * @param type       type of attachment
-     */
-    public static void addAttachmentToRender(byte[] attachment, String title, Type type) {
-        Allure.getLifecycle().addAttachment(title, type.toString(), EMPTY_STRING, attachment);
-    }
-
-    /**
-     * Add attachment that Allure will allow to download.
-     *
-     * @param attachment as byte array.
-     * @param title      title of attachment. Shown at report as name of attachment
-     * @param type       type of attachment
-     */
-    public static void addAttachmentToDownload(byte[] attachment, String title, Type type) {
-        Allure.getLifecycle().addAttachment(title, type.toString(), type.getExtension(), attachment);
     }
 }
