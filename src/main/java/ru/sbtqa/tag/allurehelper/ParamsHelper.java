@@ -3,10 +3,9 @@ package ru.sbtqa.tag.allurehelper;
 import io.qameta.allure.Allure;
 import io.qameta.allure.model.Status;
 import io.qameta.allure.model.StepResult;
+import static java.util.UUID.randomUUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static java.util.UUID.randomUUID;
 
 /**
  * Helper to add parameters to allure report
@@ -49,11 +48,11 @@ public class ParamsHelper {
      * of a Allure-Jenkins exceptions.
      * @param attachment as byte array.
      * @param title title of attachment. Shown at report as name of attachment
-     * @param type type of attachment     *
+     * @param type type of attachment
      */
     @Deprecated
     public static void addAttachment(byte[] attachment, String title, Type type) {
-        Allure.getLifecycle().addAttachment(title, type.toString(), title, attachment);
+        Allure.getLifecycle().addAttachment(title, type.getType(), title, attachment);
     }
 
     /**
@@ -64,7 +63,7 @@ public class ParamsHelper {
      * @param type       type of attachment
      */
     public static void addAttachmentToRender(byte[] attachment, String title, Type type) {
-        Allure.getLifecycle().addAttachment(title, type.toString(), EMPTY_STRING, attachment);
+        Allure.getLifecycle().addAttachment(title, type.getType(), EMPTY_STRING, attachment);
     }
 
     /**
@@ -75,6 +74,6 @@ public class ParamsHelper {
      * @param type       type of attachment
      */
     public static void addAttachmentToDownload(byte[] attachment, String title, Type type) {
-        Allure.getLifecycle().addAttachment(title, type.toString(), type.getExtension(), attachment);
+        Allure.getLifecycle().addAttachment(title, type.getType(), type.getExtension(), attachment);
     }
 }
