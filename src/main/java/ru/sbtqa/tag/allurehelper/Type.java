@@ -5,7 +5,6 @@ package ru.sbtqa.tag.allurehelper;
  *
  * @see ru.sbtqa.tag.allurehelper.ParamsHelper
  */
-
 public enum Type {
 
     TEXT("text/plain", ".txt"),
@@ -28,14 +27,14 @@ public enum Type {
 
     @Override
     public String toString() {
-        return "MIME: "+type+" EXTENSION: " + extension;
+        return "MIME: " + type + " EXTENSION: " + extension;
     }
 
     public String getExtension() {
         return extension;
     }
 
-    public String getType(){
+    public String getType() {
         return type;
     }
 }
