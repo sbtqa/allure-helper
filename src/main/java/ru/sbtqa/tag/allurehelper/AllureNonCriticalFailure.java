@@ -3,6 +3,7 @@ package ru.sbtqa.tag.allurehelper;
 import io.qameta.allure.Allure;
 import io.qameta.allure.model.Status;
 import io.qameta.allure.model.StepResult;
+
 import static java.util.UUID.randomUUID;
 
 public class AllureNonCriticalFailure {
